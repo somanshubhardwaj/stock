@@ -15,18 +15,23 @@ export default function Home() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {markets.map((market, index) => (
-            <div key={market.index} className="bg-white p-4 shadow-md">
+            <div key={index} className="bg-white p-4 shadow-md">
               <div className="flex justify-between">
                 <h2 className="text-xl font-bold">
                   {market.primary_exchanges}
-                </h2> <button className=" py-1 px-2 bg-red-200 rounded-md h-min w-min">
-                {market.current_status}
-              </button>
-              </div>
-              <p className="text-gray-500">{market.market_type}</p>
+                </h2>{" "}
+
+               
+                  {market.current_status === "open" ? (
+                    <span className="bg-green-200 h-min w-min py-1 px-2 rounded-md">Open</span>
+                  ) : (
+                    <span className="bg-red-200 h-min w-min py-1 px-2 rounded-md">Closed</span>
+                  )}
+              </div><p className="text-gray-900">{market.notes}</p>
+              <p className="text-blue-500">{market.market_type}</p>
               <p className="text-gray-500">{market.region}</p>
-             
-              <p className="text-gray-500">{market.notes}</p>
+
+              
             </div>
           ))}
         </div>
